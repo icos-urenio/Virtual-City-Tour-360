@@ -64,6 +64,7 @@
 			<folder>views</folder>
 			<folder>swfupload</folder>
 		</files>
+
 		<languages folder="administrator">
 			<language tag="en-GB">language/en-GB.com_virtualcitytour360.ini</language>
 			<language tag="en-GB">language/en-GB.com_virtualcitytour360.sys.ini</language>

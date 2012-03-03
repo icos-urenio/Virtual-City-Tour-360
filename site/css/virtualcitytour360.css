@@ -1,0 +1,111 @@
+#markerInfo img{	padding: 2px; margin: 1px; border: none;}
+#markerInfo p{margin: 15px 5px 15px 0;}
+
+#wrapper-virtualcitytour360 {margin: 0;	padding: 0;}
+#toggleMap{	width: auto;float:right;text-align:right;}
+#toggleMap span{font-size: 10px;}
+
+#virtualcitytour360{clear: both; position:relative;}
+#mapCanvas{
+	 
+	width: 100%; 
+	height: 400px;
+}
+
+#panorama{width: 318px; height: 200px;display:none;}
+
+#wrapper-filters{
+	position: absolute;
+	top: 55px;
+	right: 15px;
+	width: 200px;
+	height: 75%;
+	color: #fff;
+	background-color: #45484C;
+	padding: 10px;
+	box-shadow: 0 1px 0 #45484C inset, 0 1px 2px rgba(0, 0, 0, 0.12);
+	display: none;
+}
+
+#wrapper-info{
+	position: absolute;
+	top: 55px;
+	left: 20px;
+	width: 340px;
+	height: 75%;
+	color: #fff;
+	background-color: #45484C;
+	padding: 10px;
+	display: none;
+	box-shadow: 0 1px 0 #45484C inset, 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+#content-info, #content-filters{
+	clear: both;
+	overflow: auto;
+	width: auto;
+	height: 100%;
+}
+
+.filter-open{float: right;}
+
+.filter-close,
+.info-close{
+	float: right;
+	position: relative;
+	right: -1px;
+	top: -1px;
+	margin: 0;
+	padding: 0;
+	width: 18px;
+	height: 18px;
+}
+
+#wrapper-filters header .title,
+#wrapper-info header .title {
+    background-color: #780E00;
+    color: #FFFFFF;
+    float: left;
+    line-height: 30px;
+    margin: 0 0 14px -20px;
+    padding: 4px 15px 4px 10px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#wrapper-info h2,
+#wrapper-info h3,
+#wrapper-info h4 {margin: 5px 0;}
+
+#wrapper-filters header .title:before,
+#wrapper-info header .title:before {
+	content: " ";
+	position: absolute;
+	bottom: -7px;
+	left: 0;
+	display: block;
+	width: 10px;
+	height: 7px;
+	background: url(../images/mod_box_header.png) 0 0 no-repeat;
+}
+
+#content-filters ul{margin: 0;padding-left: 16px;}
+#content-filters li{list-style-type:none;}
+
+#content-info ul{margin: 0;padding: 0;}
+#content-info li{list-style-type:none; display:inline;}
+
+#searchPOI{
+	display: block;
+	padding-bottom: 10px;
+}
+
+#searchPOI input{
+	margin-right: 10px;
+	width: 150px;
+}
+
+#loading img{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}

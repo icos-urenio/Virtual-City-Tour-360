@@ -51,7 +51,7 @@ $params = $this->form->getFieldsets('params');
 					<?php endforeach; ?>            
 				</ul>
 			</div>
-	
+		</fieldset>
 
 			<?php echo JHtml::_('sliders.panel', JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_PHOTOS'), 'photo');?>
 			<div style="margin: 10px 20px;">

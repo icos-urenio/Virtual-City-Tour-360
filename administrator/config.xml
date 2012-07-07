@@ -16,18 +16,22 @@
 
 	</fieldset>
 
-	<fieldset name="permissions"
-		description="JCONFIG_PERMISSIONS_DESC"
+	<fieldset
+		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
-	>
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
 
-		<field name="rules" type="rules"
-			component="com_VIRTUALCITYTOUR360"
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			class="inputbox"
 			filter="rules"
 			validate="rules"
-			label="JCONFIG_PERMISSIONS_LABEL"
+			component="com_virtualcitytour360"
 			section="component" />
-	</fieldset>
+	</fieldset>	
 
 </config>
 <!--

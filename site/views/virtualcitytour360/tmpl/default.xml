@@ -7,14 +7,7 @@
 		name="request"
 		addfieldpath="/administrator/components/com_virtualcitytour360/models/fields"
 	>
-		<fieldset name="request">
-			<field
-				name="id"
-				type="virtualcitytour360"
-				label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_GREETING_LABEL"
-				description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_GREETING_DESC"
-			/>
-		</fieldset>
+
 	</fields>
 </metadata>
 

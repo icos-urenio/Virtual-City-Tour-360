@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/components/com_virtualcitytour360/models/rules">
+	<fieldset name="details">
+
+		<field
+			name="title"
+			type="text"
+			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_TITLE_LABEL"
+			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_TITLE_DESC"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+		<field
+			name="catid"
+			type="category"
+			extension="com_virtualcitytour360"
+			class="inputbox validate-catid"
+			default=""
+			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_LABEL"
+			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_DESC"
+			required="true"
+			validate="catid"
+		>
+		
+			<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+	
+		<field
+			name="address"
+			type="text"
+			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ADDRESS_LABEL"
+			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ADDRESS_DESC"
+			size="50"
+			class="inputbox validate-address"
+			required="true"
+			default=""
+		/>			
+
+		<field
+			name="photo"
+			type="file"
+			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ISSUEIMAGE_LABEL"
+			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ISSUEIMAGE_DESC"
+			class="issueimage"
+			size="30"
+			required="false"
+			default=""
+		/>		
+		
+		<field
+			name="description"
+			type="textarea"
+			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_DESCRIPTION_LABEL"
+			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_DESCRIPTION_DESC"
+			class="inputbox validate-description"
+			filter="safehtml"
+			required="true"
+			default=""
+			rows="5"
+			cols="50"
+		/>		
+
+
+		
+		<field
+			name="latitude"
+			type="hidden"
+		/>		
+		<field
+			name="longitude"
+			type="hidden"
+		/>		
+		
+		
+	</fieldset>
+	
+</form>

@@ -245,6 +245,7 @@ class Virtualcitytour360ViewPois extends JView
 		return $ar;
 	}
 	
+
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
@@ -261,7 +262,6 @@ class Virtualcitytour360ViewPois extends JView
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
 
-		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360_list.js');	
 	
 		//add google maps

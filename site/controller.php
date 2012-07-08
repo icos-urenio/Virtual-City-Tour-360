@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * @version     2.0
  * @package     com_virtualcitytour360
@@ -26,6 +26,20 @@ class Virtualcitytour360Controller extends JController
 	
 		return $this;
 	}	
+	
+	function addPoi()
+	{
+		$view = JRequest::getCmd('view', 'addpoi');
+		JRequest::setVar('view', $view);
+	
+		$v = & $this->getView($view, 'html');
+		$v->setModel($this->getModel($view));
+		//$v->display();
+		parent::display();
+	
+		return $this;
+	}	
+	
 	
 	//called only as format=raw from ajax
 	function getMarkersAsXML()

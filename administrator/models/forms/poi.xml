@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_virtualcitytour360/models/rules">
+	<fieldset name="details">
+		<field
+			name="id"
+			type="hidden"
+		/>
+		<field
+			name="title"
+			type="text"
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_TITLE_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_TITLE_DESC"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+		<field
+			name="catid"
+			type="category"
+			extension="com_virtualcitytour360"
+			class="inputbox"
+			default=""
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_CATID_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_CATID_DESC"
+			required="true"
+		>
+		
+			<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+		<field
+			name="latitude"
+			type="text"
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_LATITUDE_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_LATITUDE_DESC"
+			size="40"
+			class="inputbox validate-latitude"
+			required="false"
+			default=""
+		/>		
+		<field
+			name="longitude"
+			type="text"
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_LONGITUDE_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_LONGITUDE_DESC"
+			size="40"
+			class="inputbox validate-longitude"
+			required="false"
+			default=""
+		/>			
+		<field
+			name="description"
+			type="textarea"
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_DESC"
+			class="inputbox validate-description"
+			filter="safehtml"
+			buttons="false"
+			hide="readmore,pagebreak,toggleeditor"
+			required="false"
+			default=""
+			rows="5"
+			cols="200"
+		/>		
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+			description="COM_CATEGORIES_FIELD_LANGUAGE_DESC"
+			class="inputbox">
+			<option value="*">JALL</option>
+		</field>		
+		<field
+			name="photos"
+			type="hidden"
+		/>			
+		<field
+			name="panoramas"
+			type="hidden"
+		/>			
+		
+	</fieldset>
+	<fields name="params">
+		<fieldset
+			name="params"
+			label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS"
+		>
+			<field
+				name="show_category"
+				type="list"
+				label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_SHOW_CATEGORY_LABEL"
+				description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_SHOW_CATEGORY_DESC"
+				default=""
+			>
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

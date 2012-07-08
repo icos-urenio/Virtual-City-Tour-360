@@ -62,7 +62,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	
 			<!-- New Issue -->
 			<div class="btn-group imc-right">
-				<a class="btn btn-large btn-primary" href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&task=addIssue');?>"><i class="icon-plus icon-white"></i> <?php echo JText::_('REPORT_AN_ISSUE');?></a>
+				<a class="btn btn-large btn-primary" href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&task=addPoi');?>"><i class="icon-plus icon-white"></i> <?php echo JText::_('REPORT_AN_ISSUE');?></a>
 			</div>
 				
 			
@@ -85,15 +85,8 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 							<h2 class="imc-issue-title">
 								<?php echo '#' . $item->id . '. ' .$item->title;?>
 							</h2>
-							<div class="imc-issue-address"><?php echo $item->address;?></div>
 						</div>
 					</div>
-					<?php if ($item->photo != '') : ?>
-					<div class="imc-issue-photo">
-						<img src="<?php echo JURI::root().$item->photo;?>" alt="thumbnail photo">
-					</div>
-					<?php endif; ?>	
-					
 				</div>
 			<?php }	?>	
 			<div id="system">

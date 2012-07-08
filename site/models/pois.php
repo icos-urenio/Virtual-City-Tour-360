@@ -40,7 +40,7 @@ class Virtualcitytour360ModelPois extends JModelList
 	
 		// List state information
 		// $value = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->getCfg('list_limit'));
-		$value = $app->getUserStateFromRequest($this->context.'.list.limit', 'limit', 10); //set 10 as default do not use admin configuration...
+		$value = $app->getUserStateFromRequest($this->context.'.list.limit', 'limit', 0); //set 0 as default do not use admin configuration...
 		$this->setState('list.limit', $value);
 	
 		$value = $app->getUserStateFromRequest($this->context.'.limitstart', 'limitstart', 0);
@@ -129,8 +129,8 @@ class Virtualcitytour360ModelPois extends JModelList
 
 	protected function getListQuery()
 	{
-		$user	= JFactory::getUser();
-		$groups	= implode(',', $user->getAuthorisedViewLevels());
+		//$user	= JFactory::getUser();
+		//$groups	= implode(',', $user->getAuthorisedViewLevels());
 
 
 		// Create a new query object.
@@ -147,6 +147,20 @@ class Virtualcitytour360ModelPois extends JModelList
 		$query->leftJoin('#__categories on catid=#__categories.id');		
 		$query->where('a.state = 1');
 		
+		
+		//consider filtering...
+		
+		$filter_category = $this->getState('filter_category');
+		if(!empty($filter_category)){
+			$filter_category = implode(',', $filter_category);
+			$query->where('a.catid IN ('.$filter_category.')');
+		}
+		
+		
+		// Add the list ordering clause.
+		//$query->order($this->getState('list.ordering', 'a.ordering').' '.$this->getState('list.direction', 'ASC'));
+		//$query->group('a.id');
+				
 		return $query;
 	}	
 	

@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the Virtualcitytour360 component
  */
-class Virtualcitytour360ViewVirtualcitytour360 extends JView
+class Virtualcitytour360ViewPois extends JView
 {
 	protected $state;
 	protected $items;
@@ -69,9 +69,10 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 				$this->filters .='<li><input path="'.$JCatNode->path.'" name="box" type="checkbox" checked="checked" id="box'.$JCatNode->id.'" onclick="boxclick2(this,'.$JCatNode->id.')" />'.$JCatNode->title.'</li>' . "\n";
 				if(!empty($JCatNode->children))
 					$this->createFilters($JCatNode->children);
+			
 			}
 			$this->filters .= '</ul>';
-		}
+			}
 		return false;
 	}
 	

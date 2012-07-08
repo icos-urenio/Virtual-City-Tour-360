@@ -10,7 +10,6 @@
 			type="text"
 			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_TITLE_LABEL"
 			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_TITLE_DESC"
-			size="46"
 			class="inputbox validate-title"
 			validate="title"
 			required="true"

@@ -15,6 +15,18 @@ jimport('joomla.application.component.controller');
 class Virtualcitytour360Controller extends JController
 {
 	
+	public function display($cachable = false, $urlparams = false)
+	{
+	
+		$view = JRequest::getCmd('view', 'pois');
+		JRequest::setVar('view', $view);
+		$v = & $this->getView($view, 'html');
+		//$v->setModel($this->getModel($view), true); //the default model (true) :: $view is either issues or issue
+		$v->display();
+	
+		return $this;
+	}	
+	
 	//called only as format=raw from ajax
 	function getMarkersAsXML()
 	{

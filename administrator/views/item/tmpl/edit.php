@@ -28,7 +28,7 @@ $params = $this->form->getFieldsets('params');
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_virtualcitytour360&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate" enctype="multipart/form-data">
-	<div class="width-40 fltlft">
+	<div class="width-50 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo JText::_( 'COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_DETAILS' ); ?></legend>
 			<?php echo JHtml::_('sliders.start', 'virtualcitytour360-slider1'); ?>
@@ -51,7 +51,7 @@ $params = $this->form->getFieldsets('params');
 					<?php endforeach; ?>            
 				</ul>
 			</div>
-		</fieldset>
+		
 
 			<?php echo JHtml::_('sliders.panel', JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_PHOTOS'), 'photo');?>
 			<div style="margin: 10px 20px;">
@@ -110,13 +110,13 @@ $params = $this->form->getFieldsets('params');
 			
 			
 			<?php echo JHtml::_('sliders.end'); ?>
-
+		</fieldset>
 	</div>
 	
-	<div class="width-60 fltrt">
+	<div class="width-50 fltrt">
 		<?php echo JHtml::_('sliders.start', 'virtualcitytour360-slider2'); ?>
 		<?php echo JHtml::_('sliders.panel', JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_MAP'), 'map');?>
-			<div style="width: 100%;height: 400px;" id="mapCanvas"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_MAP');?></div>				
+			<div style="width: auto;height: 400px;" id="mapCanvas"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_MAP');?></div>				
 			<div id="infoPanel" style="margin: 15px;">
 			<b><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_GEOLOCATION');?></b>
 			<div id="info"></div>

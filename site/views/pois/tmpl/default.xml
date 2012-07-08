@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="List of POIs">
+		<message>List of POIs in one screen</message>
+	</layout>
+	<fields
+		name="request"
+		addfieldpath="/administrator/components/com_virtualcitytour360/models/fields"
+	>
+
+	</fields>
+</metadata>
+

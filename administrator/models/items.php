@@ -47,7 +47,8 @@ class Virtualcitytour360Modelitems extends JModelList
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// Initialise variables.
-		$app = JFactory::getApplication('administrator');
+		$app = JFactory::getApplication();
+		$session = JFactory::getSession();
 
 		// Load the filter state.
 		$search = $app->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
@@ -56,12 +57,15 @@ class Virtualcitytour360Modelitems extends JModelList
 		$published = $app->getUserStateFromRequest($this->context.'.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
 
+		$categoryId = $this->getUserStateFromRequest($this->context.'.filter.category_id', 'filter_category_id');
+		$this->setState('filter.category_id', $categoryId);		
+		
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_virtualcitytour360');
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.id', 'asc');
+		parent::populateState('a.id', 'desc');
 	}
 
 	/**

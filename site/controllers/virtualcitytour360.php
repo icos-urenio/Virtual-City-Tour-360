@@ -13,6 +13,4 @@ defined('_JEXEC') or die;
 jimport('joomla.application.controller');
 
 class Virtualcitytour360ControllerVirtualcitytour360 extends JController
-{
-
-}
+{}

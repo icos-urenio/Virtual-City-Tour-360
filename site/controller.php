@@ -21,7 +21,7 @@ class Virtualcitytour360Controller extends JController
 		$view = JRequest::getCmd('view', 'pois');
 		JRequest::setVar('view', $view);
 		$v = & $this->getView($view, 'html');
-		//$v->setModel($this->getModel($view), true); //the default model (true) :: $view is either issues or issue
+		$v->setModel($this->getModel($view), true); //the default model (true) :: $view is either pois or virtualcitytour360
 		$v->display();
 	
 		return $this;

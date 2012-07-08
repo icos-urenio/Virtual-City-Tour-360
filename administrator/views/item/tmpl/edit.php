@@ -123,7 +123,7 @@ $params = $this->form->getFieldsets('params');
 			<b><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_CLOSEST_ADDRESS');?></b>
 			<div id="near_address"></div>
 			<div id="geolocation">
-				<input id="address" type="textbox" size="75" value="Θέρμη">
+				<input id="address" type="text" size="75" value="Θέρμη">
 				<input type="button" value="<?php echo JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_LOCATE');?>" onclick="codeAddress()">
 			</div>	
 			</div>	

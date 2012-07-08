@@ -9,6 +9,9 @@
 
 defined('_JEXEC') or die;
 
+// require helper file
+JLoader::register('Virtualcitytour360Helper', dirname(__FILE__) . DS . 'helpers' . DS . 'virtualcitytour360.php');
+
 // Include dependancies
 jimport('joomla.application.component.controller');
 

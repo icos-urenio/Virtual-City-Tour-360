@@ -39,10 +39,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<input type="hidden" name="task" value="" />
 				
 				<!-- Mega Menu -->
+				
 				<ul id="mega-menu">
 					<li id="drop-1"><a id="btn-1" href="javascript:void(0);" class="btn"><i class="icon-list-alt"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_FILTER_SELECTION')?></a>
-						<div class="megadrop dropdown_6columns">
-							<div class="col_6">
+						<div class="megadrop dropdown_4columns">
+							<div class="col_4">
 								<h2><?php echo JText::_('COM_VIRTUALCITYTOUR360_CATEGORIES')?></h2>
 							</div>
 							
@@ -52,13 +53,24 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 								</div>					
 							<?php }?>
 
-							<div class="col_6" style="text-align: center;">
+							<div class="col_4" style="text-align: center;">
 								<button type="submit" class="btn btn-success" name="Submit" value="<?php echo JText::_('COM_VIRTUALCITYTOUR360_APPLY_FILTERS')?>"><i class="icon-ok icon-white"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_APPLY_FILTERS')?></button>
 							</div>
 						</div>
 					</li>
+					<li id="drop-2"><a id="btn-2" href="javascript:void(0);" class="btn"><i class="icon-adjust"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEWS')?></a>
+						<div class="megadrop dropdown_2columns">
+							<div class="col_2">						
+								<ul>
+									<!-- dropdown menu links -->
+									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=virtualcitytour360');?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW1');?></a></li>
+									<!-- <li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=pois');?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW2');?></a></li> -->
+								</ul>						
+							</div>
+						</div>
+					</li>					
 				</ul>
-			</form>	
+			</form>
 	
 			<!-- New Issue -->
 			<div class="btn-group imc-right">
@@ -73,26 +85,22 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	
 	<div id="imc-content">
 		<div id="imc-main-panel-fifty">
-			<?php if(empty($this->items)) : ?>
-				<div class="alert alert-error width75">
-				<?php echo JText::_('COM_VIRTUALCITYTOUR360_FILTER_REVISION'); ?>
-				</div>
-			<?php endif; ?>
-			<?php foreach($this->items as $item){ ?>
-				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo VirtualCityTour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=issue&issue_id='.$item->id);?>';void(0);" >
-					<div class="imc-issue-content">
-						<div class="imc-issue-review">
-							<h2 class="imc-issue-title">
-								<?php echo '#' . $item->id . '. ' .$item->title;?>
-							</h2>
-						</div>
+			<div id="citytourinfo">
+				<?php if(empty($this->items)) : ?>
+					<div class="alert alert-error width75">
+					<?php echo JText::_('COM_VIRTUALCITYTOUR360_FILTER_REVISION'); ?>
 					</div>
-				</div>
-			<?php }	?>	
-			<div id="system">
-			<?php echo $this->pagination->getPagesLinks(); ?>
+				<?php endif; ?>
+				
+				<div id="wrapper-info">	
+					<h1 class="title"><?php echo JText::_('COM_VIRTUALCITYTOUR360_INFO');?></h1>
+					<div id="markerTitle" style="clear: both;"></div>
+					<div id="content-info">
+						<div id="panorama"></div>
+						<div id="markerInfo"></div>		
+					</div>
+				</div>			
 			</div>
-			
 		</div>
 		<div id="imc-details-sidebar-fifty">
 			<div id="mapCanvas"><?php echo JText::_('COM_VIRTUALCITYTOUR360');?></div>

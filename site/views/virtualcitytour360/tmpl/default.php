@@ -23,6 +23,7 @@ defined('_JEXEC') or die;
 					<?php endif; ?>				
 				</h1>
 				<?php endif; ?>
+				<a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=pois');?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW2');?></a>
 				<a class="filter-open" href="#"><?php echo JText::_('COM_VIRTUALCITYTOUR360_FILTERS');?></a><br />
 				<div id="toggleMap"><a id="toggleMapSize" href="#"><span id="map-size"><?php echo JText::_('COM_VIRTUALCITYTOUR360_BIG_MAP');?></span></a></div>
 				<div id="loading"><img src="<?php echo JURI::base().'components/com_virtualcitytour360/images/ajax-loader.gif';?>" /></div>

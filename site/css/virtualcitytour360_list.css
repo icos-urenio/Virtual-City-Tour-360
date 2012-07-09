@@ -7,6 +7,7 @@
  */
 
 /* General  */
+#citytourinfo {padding-right: 10px;}
 #imc-wrapper {margin: 0;	padding: 0; overflow: hidden;}
 #imc-wrapper a {outline: 0;}  /* remove this line for accessibility issues */
 #imc-header {

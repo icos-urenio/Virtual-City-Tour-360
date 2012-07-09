@@ -567,7 +567,7 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 			function embedFlash(pan){
 				var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
 				flash += '<param name=\"wmode\" value=\"transparent\"> ';
-				flash +='<embed src=\"components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=components/com_virtualcitytour360/pano/my_cursor.png&xml_path=components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"100%\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
+				flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"100%\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
 				flash += '</object>';
 				$(\"#panorama\").html(flash);
 			}

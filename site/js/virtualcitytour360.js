@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("#toggleMapSize").click(function(event){
+	
+	$("#toggleMapSize").click(function(event){
         event.preventDefault();
         var height = $("#mapCanvas").height();
         
@@ -67,4 +68,7 @@ $(document).ready(function(){
 	$("#content-info").height($("#wrapper-info").height()-75);
 	$("#content-filters").height($("#wrapper-filters").height()-50);
 
+	
+	
+	
 });

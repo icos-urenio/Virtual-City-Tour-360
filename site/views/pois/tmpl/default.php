@@ -91,10 +91,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 					<?php echo JText::_('COM_VIRTUALCITYTOUR360_FILTER_REVISION'); ?>
 					</div>
 				<?php endif; ?>
-				
+				<!-- <a href="#" onclick="google.maps.event.trigger(gmarkers[0], 'click');">test</a> -->				
 				<div id="wrapper-info">	
-					<h1 class="title"><?php echo JText::_('COM_VIRTUALCITYTOUR360_INFO');?></h1>
-					<div id="markerTitle" style="clear: both;"></div>
+					<div id="markerTitle">&nbsp;</div>
 					<div id="content-info">
 						<div id="panorama"></div>
 						<div id="markerInfo"></div>		

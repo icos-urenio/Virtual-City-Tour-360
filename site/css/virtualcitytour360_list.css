@@ -50,7 +50,7 @@
 	float:left; 
 	width: 40%; 
 }
-#imc-main-panel-fifty{float:left;	width: 50%;	clear: both;}
+#imc-main-panel-fifty{float:left;	width: 50%; display:block;	}
 #imc-details-sidebar-fifty{float:left;width: 50%; }
 
 

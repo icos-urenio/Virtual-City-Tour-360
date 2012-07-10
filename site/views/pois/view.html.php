@@ -250,6 +250,7 @@ class Virtualcitytour360ViewPois extends JView
 
 		$document->addScriptDeclaration('var jsonMarkers = '.json_encode($this->getMarkersArrayFromItems()).';');
 		
+		
 		$LAT = $this->lat;
 		$LON = $this->lon;
 		
@@ -705,9 +706,10 @@ class Virtualcitytour360ViewPois extends JView
 			
 		});
 		
-		// google.maps.event.addListenerOnce(map, 'idle', function(){
-		// $(\"#loading\").hide();
-		// });
+		google.maps.event.addListenerOnce(map, 'idle', function(){
+			// $(\"#loading\").hide();
+			google.maps.event.trigger(gmarkers[4], 'click'); 
+			});
 		}
 			
 		//alternative to infoWindow is the infoBox
@@ -728,7 +730,7 @@ class Virtualcitytour360ViewPois extends JView
 			infoBox.open(map, marker);
 		});
 		}
-			
+	
 		
 		function downloadUrl(url, callback) {
 			var request = window.ActiveXObject ?
@@ -1005,15 +1007,18 @@ class Virtualcitytour360ViewPois extends JView
 		function embedFlash(pan){
 		var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
 		flash += '<param name=\"wmode\" value=\"transparent\"> ';
-		flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"100%\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
+		flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
 		flash += '</object>';
 		$(\"#panorama\").html(flash);
 		}
 		
+
+		
 			
 		// Onload handler to fire off the app.
 		google.maps.event.addDomListener(window, 'load', initialize);
-			
+	
+		
 			
 		";
 
@@ -1021,6 +1026,8 @@ class Virtualcitytour360ViewPois extends JView
 		
 		//add the javascript to the head of the html document
 		$document->addScriptDeclaration($googleMapInit);
+
+		
 	}
 
 }

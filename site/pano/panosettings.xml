@@ -2,7 +2,7 @@
 <my_params>
 	<stage>
 		<panowindow fullstage="yes" />
-		<panorama_controller path="components/com_virtualcitytour360/pano/controls.swf" posx="0" posy="0"/>
+		<panorama_controller path="/thermi/components/com_virtualcitytour360/pano/controls.swf" posx="0" posy="0"/>
 		<security allow_script_access="no" />
 		<captions fov_max=" " fov_min=" " connecting="Connecting..." image_file_not_found="Panorama not found!" />
 	</stage>
@@ -10,6 +10,11 @@
 		<panorama_controller show_item="yes" off_caption="Hide controller" on_caption="Show controller"/>
 		<full_screen show_item="yes" on_caption="Full Screen" off_caption="Exit Full Screen" />
 	</context_menu>
+	<!-- 
+	<user_panel>
+		<logo path="/thermi/components/com_virtualcitytour360/pano/logo_panorama.png" posx="5" posy="5" />
+	</user_panel>	
+	-->
 	<play_objects>
 		<view init_filter="yes" limit_vertical="yes" init_fov="120" init_yaw="0" init_pitch="0" top_limit="67" bottom_limit="67" />
 	</play_objects>	

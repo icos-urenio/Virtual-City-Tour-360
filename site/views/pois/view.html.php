@@ -223,7 +223,7 @@ class Virtualcitytour360ViewPois extends JView
 		return $ar;
 	}
 	
-	protected function setDocument00() 
+	protected function setDocumentOK() 
 	{
 		$document = JFactory::getDocument();
 		
@@ -569,7 +569,7 @@ class Virtualcitytour360ViewPois extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');	
 		//colorbox (keep this?)
-		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
+		//$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
 		
 		//add scripts
 		if($this->loadjquery == 1)
@@ -578,13 +578,13 @@ class Virtualcitytour360ViewPois extends JView
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
 		
 		//colorbox (keep this?)
-		$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
-		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
+		//$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
+		//$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 	
 		//add google maps
 		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
-		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');		
 			
+		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');
 
 		$LAT = ''; //todo get point from component's parameter
 		$LON = '';
@@ -594,10 +594,9 @@ class Virtualcitytour360ViewPois extends JView
 		}
 	
 		//prepare custom icons according (get images from virtualcitytour360 categories)
-	
 		$this->createCustomMarkers($this->categories);
 		$this->customMarkers = substr($this->customMarkers, 0, -2);	//remove /n and comma
-	
+		
 		$googleMapInit = "
 		var geocoder = new google.maps.Geocoder();
 		var map = null;
@@ -628,88 +627,83 @@ class Virtualcitytour360ViewPois extends JView
 			
 			var latLng = new google.maps.LatLng(LAT, LON);
 			map = new google.maps.Map(document.getElementById('mapCanvas'), {
-			zoom: 11,
-			center: latLng,
-			panControl: false,
-			streetViewControl: false,
-			zoomControlOptions: {
-			style: google.maps.ZoomControlStyle.SMALL
-			},
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		});
-		
-		infoWindow = new google.maps.InfoWindow;
-		
-		var infoBoxOptions = {
-		disableAutoPan: false
-		,maxWidth: 0
-		,pixelOffset: new google.maps.Size(-100, 0)
-		,zIndex: null
-		,boxStyle: {
-		background: \"url(" . JURI::base().'components/com_virtualcitytour360/images/tipbox.gif' . ") -40px 0 no-repeat\"
-		,opacity: 0.75
-		,width: \"200px\"
-		}
-		,closeBoxMargin: \"10px 2px 2px 2px\"
-		,closeBoxURL: \"http://www.google.com/intl/en_us/mapfiles/close.gif\"
-		,infoBoxClearance: new google.maps.Size(1, 1)
-		,isHidden: false
-		,pane: \"floatPane\"
-		,enableEventPropagation: false
-		};
-		infoBox = new InfoBox(infoBoxOptions);
-		
-		
-		
-		
-		var URL = 'index.php?option=com_virtualcitytour360&view=virtualcitytour360&task=getMarkersAsXML&format=raw&".JUtility::getToken()."=1';
-		// Change this depending on the name of your PHP file
-		downloadUrl(URL, function(data) {
-		var xml = data.responseXML;
-		var markers = xml.documentElement.getElementsByTagName('marker');
-		for (var i = 0; i < markers.length; i++) {
-		var name = markers[i].getAttribute('name');
-		var description = markers[i].getAttribute('description');
-		var catid = markers[i].getAttribute('catid');
-		var id = markers[i].getAttribute('id');
-		var photos = markers[i].getAttribute('photos');
-		var panoramas = markers[i].getAttribute('panoramas');
-		
-		var point = new google.maps.LatLng(
-		parseFloat(markers[i].getAttribute('lat')),
-		parseFloat(markers[i].getAttribute('lng'))
-		);
-		
-		
-		var html = '<strong>' + name + '</strong>';
-		var icon = customIcons[catid] || {};
-		var marker = new google.maps.Marker({
-		map: map,
-		position: point,
-		title: name,
-		icon: icon.icon,
-		shadow: icon.shadow
-		});
-		
-		marker.catid = catid;
-		marker.id = id;
-		marker.photos = photos;
-		marker.panoramas = panoramas;
-		marker.description = description;
-		
-		//bindInfoWindow(marker, map, infoWindow, html);
-		bindInfoBox(marker, map, infoBox, html);
-		gmarkers.push(marker);
-		}
-			
-		$(\"#loading\").hide();
-			
-		});
-		
-		google.maps.event.addListenerOnce(map, 'idle', function(){
-			// $(\"#loading\").hide();
-			google.maps.event.trigger(gmarkers[4], 'click'); 
+				zoom: 11,
+				center: latLng,
+				panControl: false,
+				streetViewControl: false,
+				zoomControlOptions: {
+				style: google.maps.ZoomControlStyle.SMALL
+				},
+				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
+			
+			infoWindow = new google.maps.InfoWindow;
+		
+			var infoBoxOptions = {
+				disableAutoPan: false
+				,maxWidth: 0
+				,pixelOffset: new google.maps.Size(-100, 0)
+				,zIndex: null
+				,boxStyle: {
+					background: \"url(" . JURI::base().'components/com_virtualcitytour360/images/tipbox.gif' . ") -40px 0 no-repeat\"
+					,opacity: 0.75
+					,width: \"200px\"
+				}
+				,closeBoxMargin: \"10px 2px 2px 2px\"
+				,closeBoxURL: \"http://www.google.com/intl/en_us/mapfiles/close.gif\"
+				,infoBoxClearance: new google.maps.Size(1, 1)
+				,isHidden: false
+				,pane: \"floatPane\"
+				,enableEventPropagation: false
+			};
+			infoBox = new InfoBox(infoBoxOptions);
+
+			var URL = 'index.php?option=com_virtualcitytour360&view=virtualcitytour360&task=getMarkersAsXML&format=raw&".JUtility::getToken()."=1';
+			// Change this depending on the name of your PHP file
+			downloadUrl(URL, function(data) {
+				var xml = data.responseXML;
+				var markers = xml.documentElement.getElementsByTagName('marker');
+				for (var i = 0; i < markers.length; i++) {
+					var name = markers[i].getAttribute('name');
+					var description = markers[i].getAttribute('description');
+					var catid = markers[i].getAttribute('catid');
+					var id = markers[i].getAttribute('id');
+					var photos = markers[i].getAttribute('photos');
+					var panoramas = markers[i].getAttribute('panoramas');
+					var point = new google.maps.LatLng(
+						parseFloat(markers[i].getAttribute('lat')),
+						parseFloat(markers[i].getAttribute('lng'))
+					);
+					
+					var html = '<strong>' + name + '</strong>';
+					var icon = customIcons[catid] || {};
+					var marker = new google.maps.Marker({
+						map: map,
+						position: point,
+						title: name,
+						icon: icon.icon,
+						shadow: icon.shadow
+					});
+					
+					marker.catid = catid;
+					marker.id = id;
+					marker.photos = photos;
+					marker.panoramas = panoramas;
+					marker.description = description;
+					
+					//bindInfoWindow(marker, map, infoWindow, html);
+					bindInfoBox(marker, map, infoBox, html);
+					gmarkers.push(marker);
+				}
+				$(\"#loading\").hide();
+			});
+		
+			google.maps.event.addListenerOnce(map, 'idle', function(){
+				// $(\"#loading\").hide();
+				google.maps.event.trigger(gmarkers[0], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
+			});
+			
+			$(\"#loading\").hide();
 		}
 			
 		//alternative to infoWindow is the infoBox
@@ -717,20 +711,19 @@ class Virtualcitytour360ViewPois extends JView
 			var boxText = document.createElement(\"div\");
 			boxText.style.cssText = \"border: 1px solid black; margin-top: 8px; background-color: yellow; padding: 5px;\";
 			boxText.innerHTML = html;
-			
+
 			google.maps.event.addListener(marker, 'click', function() {
-			infoBox.setContent(boxText);
-			infoBox.open(map, marker);
-			//map.panTo(marker.getPosition());
-			showInfo(marker);
-		});
+				infoBox.setContent(boxText);
+				infoBox.open(map, marker);
+				//map.panTo(marker.getPosition());
+				showInfo(marker);
+			});
 			
-		google.maps.event.addListener(marker, 'mouseover', function() {
-			infoBox.setContent(boxText);
-			infoBox.open(map, marker);
-		});
+			google.maps.event.addListener(marker, 'mouseover', function() {
+				infoBox.setContent(boxText);
+				infoBox.open(map, marker);
+			});
 		}
-	
 		
 		function downloadUrl(url, callback) {
 			var request = window.ActiveXObject ?
@@ -739,14 +732,14 @@ class Virtualcitytour360ViewPois extends JView
 			
 			request.onreadystatechange = function() {
 				if (request.readyState == 4) {
-				request.onreadystatechange = doNothing;
-				callback(request, request.status);
-				resetBounds();
-			}
-		};
-		
-		request.open('GET', url, true);
-		request.send(null);
+					request.onreadystatechange = doNothing;
+					callback(request, request.status);
+					resetBounds();
+				}
+			};
+			
+			request.open('GET', url, true);
+			request.send(null);
 		}
 		
 		function doNothing() {}
@@ -762,272 +755,291 @@ class Virtualcitytour360ViewPois extends JView
 				}
 			}
 			if(a > 0){
-			map.fitBounds(bounds);
-			var listener = google.maps.event.addListener(map, 'idle', function() {
-				if (map.getZoom() > 16) map.setZoom(16);
-				google.maps.event.removeListener(listener);
-			});
+				map.fitBounds(bounds);
+				var listener = google.maps.event.addListener(map, 'idle', function() {
+					if (map.getZoom() > 16) map.setZoom(16);
+					google.maps.event.removeListener(listener);
+				});
 			}
 		}
 			
 		//show markers according to filtering
 		function show(category) {
-		for (var i=0; i<gmarkers.length; i++) {
-		if (gmarkers[i].catid == category) {
-		gmarkers[i].setVisible(true);
+			for (var i=0; i<gmarkers.length; i++) {
+				if (gmarkers[i].catid == category) {
+					gmarkers[i].setVisible(true);
+				}
+			}
+			// == check the checkbox ==
+			///document.getElementById('box'+category).checked = true;
+			$('#box'+category).checked = true;
+			resetBounds();
 		}
-		}
-		// == check the checkbox ==
-		document.getElementById('box'+category).checked = true;
-		resetBounds();
-		}
+		
 		function hide(category) {
-		for (var i=0; i<gmarkers.length; i++) {
-		if (gmarkers[i].catid == category) {
-		gmarkers[i].setVisible(false);
-		}
-		}
-		// == clear the checkbox ==
-		document.getElementById('box'+category).checked = false;
-		if(infoWindow != null)
-		infoWindow.close();
-		
-		if(infoBox != null)
-		infoBox.close();
-		
-		$(\"#markerInfo\").html('');
-		$(\"#panorama\").html('');
-		
-		$(\"#wrapper-info\").hide(500);
-		
-		resetBounds();
-		}
+			for (var i=0; i<gmarkers.length; i++) {
+				if (gmarkers[i].catid == category) {
+					gmarkers[i].setVisible(false);
+				}
+			}
+			// == clear the checkbox ==
+			///document.getElementById('box'+category).checked = false;
+			$('#box'+category).checked = false;
+			if(infoWindow != null)
+				infoWindow.close();
 			
-		//--- recursively get tree
-		function boxclick(box, category, parent) {
-		if (box.checked) {
-		show(category);
-		} else {
-		hide(category);
-		}
-		
-		var arr = new Array();
-		arr = document.getElementsByName('box'+category);
-		
-		for(var i = 0; i < arr.length; i++)
-		{
-		var obj = document.getElementsByName('box'+category).item(i);
-		var c = obj.id.substr(3, obj.id.length);
-		var p = obj.name.substr(3, obj.name.length);
-		
-		if (box.checked) {
-		obj.checked = true;
-		} else {
-		obj.checked = false;
-		}
-		boxclick(obj, c, p);
+			if(infoBox != null)
+				infoBox.close();
 			
-		}
-		
-		// == rebuild the side bar
-		makeSidebar();
-		return false;
+			$(\"#markerInfo\").html('');
+			$(\"#panorama\").html('');
+			$(\"#wrapper-info\").hide(500);
+			resetBounds();
 		}
 			
 		//--- non recursive since IE cannot handle it (doh!!)
 		function boxclick2(box, category) {
-		if (box.checked) {
-		show(category);
-		} else {
-		hide(category);
-		}
-		
-		var com = box.getAttribute('path');
-		var arr = new Array();
-		arr = document.getElementsByName('box');
-		
-		for(var i = 0; i < arr.length; i++)
-		{
-		var obj = document.getElementsByName('box').item(i);
-		var c = obj.id.substr(3, obj.id.length);
+			if (box.checked) {
+				show(category);
+			} 
+			else {
+				hide(category);
+			}
 			
-		var path = obj.getAttribute('path');
-		if(com == path.substring(0,com.length)){
-		if (box.checked) {
-		obj.checked = true;
-		show(c);
-		} else {
-		obj.checked = false;
-		hide(c);
-		}
-		}
-		}
-		
-		// == rebuild the side bar
-		makeSidebar();
-		return false;
+			var com = box.getAttribute('path');
+			var arr = new Array();
+			arr = document.getElementsByName('box');
+			
+			for(var i = 0; i < arr.length; i++) {
+				var obj = document.getElementsByName('box').item(i);
+				var c = obj.id.substr(3, obj.id.length);
+				var path = obj.getAttribute('path');
+				if(com == path.substring(0,com.length)){
+					if (box.checked) {
+						obj.checked = true;
+						show(c);
+					} 
+					else {
+						obj.checked = false;
+						hide(c);
+					}
+				}
+			}
+			
+			// == rebuild the side bar
+			makeSidebar();
+			return false;
 		}
 			
 		function markerSearch(text){
-		if(text == ''){
-		alert('Γράψτε μια λέξη προς αναζήτηση σημείου ενδιαφέροντος');
-		return;
-		}
-		
-		
-		var index = -1;
-		for (var i=0; i<gmarkers.length; i++) {
-		var a1 = gmarkers[i].title.toUpperCase();
-		var a2 = gmarkers[i].description.toUpperCase();
+			if(text == ''){
+				alert('Γράψτε μια λέξη προς αναζήτηση σημείου ενδιαφέροντος');
+				return;
+			}
 			
-		var b = text.toUpperCase();
-		if(a1.contains(b) || a2.contains(b)){
-		if(gmarkers[i].getVisible()){
-		index = i;
-		break;
-		}
-		}
-		}
-		
-		
-		
-		if(index == -1)
-		alert('Δε βρέθηκε σημείο ενδιαφέροντος')
-		else
-		google.maps.event.trigger(gmarkers[index],'click');
+			var index = -1;
+			for (var i=0; i<gmarkers.length; i++) {
+				var a1 = gmarkers[i].title.toUpperCase();
+				var a2 = gmarkers[i].description.toUpperCase();
+				var b = text.toUpperCase();
+				if(a1.contains(b) || a2.contains(b)){
+					if(gmarkers[i].getVisible()){
+						index = i;
+						break;
+					}
+				}
+			}
+			
+			if(index == -1)
+				alert('Δε βρέθηκε σημείο ενδιαφέροντος')
+			else
+				google.maps.event.trigger(gmarkers[index],'click');
 		}
 			
 		function markerclick(i) {
-		google.maps.event.trigger(gmarkers[i],'click');
+			google.maps.event.trigger(gmarkers[i],'click');
 		}
 		
 		function markerclick2(id) {
-		var index;
-		for (var i=0; i<gmarkers.length; i++) {
-		if(gmarkers[i].id == id){
-		index = i;
-		}
-		}
-		google.maps.event.trigger(gmarkers[index],'click');
+			var index;
+			for (var i=0; i<gmarkers.length; i++) {
+				if(gmarkers[i].id == id){
+					index = i;
+				}
+			}
+			google.maps.event.trigger(gmarkers[index],'click');
 		}
 		
 		// == rebuilds the sidebar to match the markers currently displayed ==
 		function makeSidebar() {
-		var html = '<ul>';
-		for (var i=0; i<gmarkers.length; i++) {
-		if (gmarkers[i].getVisible()) {
-		html += '<li><a href=\"javascript:markerclick(' + i + ');\">' + gmarkers[i].title + '<\/a><\/li>';
-		}
-		}
-		html += '<\/ul>';
-		document.getElementById('infobar').innerHTML = html;
+			var html = '<ul>';
+			for (var i=0; i<gmarkers.length; i++) {
+				if (gmarkers[i].getVisible()) {
+					html += '<li><a href=\"javascript:markerclick(' + i + ');\">' + gmarkers[i].title + '<\/a><\/li>';
+				}
+			}
+			html += '<\/ul>';
+			document.getElementById('infobar').innerHTML = html;
 		}
 		
 		function showInfo(marker){
-		$(\"#markerTitle\").html('<h2>' + marker.title + '</h2>');
-		$(\"#panorama\").html('');
-		$(\"#markerInfo\").html('');
-		
-		
-		html = '';
-		
-		if(marker.panoramas != ''){
-		//html += '<h3>Πανοράματα</h3>';
-		html += createInfoPanoramas(marker);
-		}
-		
-		if(marker.photos != ''){
-		//html += '<h3>Φωτογραφίες</h3>';
-		html += '<br /><br />';
-		html += createInfoImages(marker);
-		}
-		
-		
-		html += '<p>' + marker.description + '</p>';
-		
-		$(\"#markerInfo\").html(html);
-		
-		if(marker.photos != ''){
-		$(\"a[rel='photos']\").colorbox();
-		}
-		
-		if(marker.panoramas != ''){
-		$(\"#panorama\").show();
-		}
-		else{
-		$(\"#panorama\").hide();
-		}
-		
-		$(\"#wrapper-info\").show(500);
+			$(\"#markerTitle\").html('<h2>' + marker.title + '</h2>');
+			$(\"#panorama\").html('');
+			$(\"#markerInfo\").html('');
+			html = '';
+			
+			if(marker.panoramas != ''){
+				//html += '<h3>Πανοράματα</h3>';
+				html += createInfoPanoramas(marker);
+			}
+			
+			if(marker.photos != ''){
+				//html += '<h3>Φωτογραφίες</h3>';
+				html += '<br /><br />';
+				html += createInfoImages(marker);
+			}
+			
+			html += '<p>' + marker.description + '</p>';
+			$(\"#markerInfo\").html(html);
+			
+			if(marker.photos != ''){
+				$(\"a[rel='photos']\").colorbox();
+			}
+			
+			if(marker.panoramas != ''){
+				$(\"#panorama\").show();
+			}
+			else{
+				$(\"#panorama\").hide();
+			}
+			
+			$(\"#wrapper-info\").show(500);
 		}
 			
 		function createInfoImages(marker){
-		var arr = marker.photos.split(';');
-		var html = '';
-		for(i = 0; i < arr.length; i++){
-		if(arr[i] != ''){
-		var thumb = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/images/thumbs/' + arr[i];
-		var img = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/images/' + arr[i];
-		html += '<a title=\"'+marker.title+'\" rel=\"photos\" href=\"'+img+'\">';
-		html +=  '<img src=\"' ;
-		html +=	thumb;
-		html += '\" />';
-		html += '</a>';
-		}
-		}
-		return html;
+			var arr = marker.photos.split(';');
+			var html = '';
+			for(i = 0; i < arr.length; i++){
+				if(arr[i] != ''){
+					var thumb = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/images/thumbs/' + arr[i];
+					var img = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/images/' + arr[i];
+					html += '<a title=\"'+marker.title+'\" rel=\"photos\" href=\"'+img+'\">';
+					html +=  '<img src=\"' ;
+					html +=	thumb;
+					html += '\" />';
+					html += '</a>';
+				}
+			}
+			return html;
 		}
 			
 		function createInfoPanoramas(marker){
-		var arr = marker.panoramas.split(';');
-		var html = '';
-		
-		
-		for(i = 0; i < arr.length; i++){
-		if(arr[i] != ''){
-		var pan = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/panoramas/original/' + arr[i];
-		if(i == 0){
-		embedFlash(pan);
-		if(arr.length == 2){
-		return html;
-		}
-		html += '<ul>';
-		}
-		
-		html += '<li><a href=\"javascript:void(0);\" onclick=\"embedFlash(\''+pan+'\')\"><span class=\"tab\">' + (i+1) + '</span></a></li>';
-		if(i == arr.length-1){
-		html += '</ul>';
-		}
-		}
-		}
-		
-		return html;
+			var arr = marker.panoramas.split(';');
+			var html = '';
+			
+			for(i = 0; i < arr.length; i++){
+				if(arr[i] != ''){
+					var pan = '" . JURI::root(true). "/images/virtualcitytour360/". "' + marker.id + '/panoramas/original/' + arr[i];
+					if(i == 0){
+						embedFlash(pan);
+						if(arr.length == 2){
+							return html;
+						}
+						html += '<ul>';
+					}
+					
+					html += '<li><a href=\"javascript:void(0);\" onclick=\"embedFlash(\''+pan+'\')\"><span class=\"tab\">' + (i+1) + '</span></a></li>';
+					if(i == arr.length-1){
+						html += '</ul>';
+					}
+				}
+			}
+			
+			return html;
 		}
 			
 		function embedFlash(pan){
-		var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
-		flash += '<param name=\"wmode\" value=\"transparent\"> ';
-		flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
-		flash += '</object>';
-		$(\"#panorama\").html(flash);
+			var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
+			flash += '<param name=\"wmode\" value=\"transparent\"> ';
+			flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
+			flash += '</object>';
+			$(\"#panorama\").html(flash);
 		}
 		
-
-		
-			
 		// Onload handler to fire off the app.
 		google.maps.event.addDomListener(window, 'load', initialize);
-	
-		
-			
 		";
 
 		
-		
-		//add the javascript to the head of the html document
-		$document->addScriptDeclaration($googleMapInit);
+		$megamenu_js = "
+		window.addEvent('domready', function() {
+			$(\".imc-issue-item\").mouseenter(function(event)
+			{
+				$(this).addClass(\"imc-highlight\");
+				markerhover($(this).attr('id').substring(8));
+			});
 
+			$(\".imc-issue-item\").mouseleave(function(event)
+			{
+				$(this).removeClass(\"imc-highlight\");
+				markerout($(this).attr('id').substring(8));
+			});	  
+
+			$(document).click(function(e) {
+				if( $('#drop-1').is('.hover')) { $('#drop-1').removeClass('hover');	}				   
+				if( $('#drop-2').is('.hover')) { $('#drop-2').removeClass('hover');	}				   
+				if( $('#drop-3').is('.hover')) { $('#drop-3').removeClass('hover');	}				   
+			});
+			
+			$('#btn-1').click(function(event)
+			{
+				if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+				if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+				
+				if( $('#drop-1').is('.hover')) {
+					$('#drop-1').removeClass('hover');
+				}
+				else{
+					$('#drop-1').addClass('hover');
+				}
+				event.stopPropagation();
+			});
+			
+			$('#btn-2').click(function(event)
+			{
+				if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
+				if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+			
+				if( $('#drop-2').is('.hover')) {
+					$('#drop-2').removeClass('hover');
+				}
+				else{
+					$('#drop-2').addClass('hover');
+				}
+				event.stopPropagation();
+			});
+			$('#btn-3').click(function(event)
+			{
+				if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
+				if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+			
+				if( $('#drop-3').is('.hover')) {
+					$('#drop-3').removeClass('hover');
+				}
+				else{
+					$('#drop-3').addClass('hover');
+				}
+				event.stopPropagation();
+			});
+			
+			$('.megadrop').click(function(event) { event.stopPropagation();	});
+			
+		});			
+		";
 		
+		//add javascript to the head of the html document
+		$document->addScriptDeclaration($googleMapInit);
+		$document->addScriptDeclaration($megamenu_js);
 	}
 
 }

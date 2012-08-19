@@ -63,8 +63,8 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 							<div class="col_2">						
 								<ul>
 									<!-- dropdown menu links -->
-									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=virtualcitytour360');?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW1');?></a></li>
-									<!-- <li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=pois');?>"><i class="icon-asterisk"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW2');?></a></li> -->
+									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=virtualcitytour360');?>"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW1');?></a></li>
+									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=pois');?>"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW2');?> <i class=" icon-ok"></i></a></li>
 								</ul>						
 							</div>
 						</div>

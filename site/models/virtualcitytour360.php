@@ -26,6 +26,47 @@ class Virtualcitytour360ModelVirtualcitytour360 extends JModelList
 	private $_categories = null;
 	private $_parent = null;
 
+	protected function populateState()
+	{
+		$app = JFactory::getApplication();
+	
+		//set filter status in state
+		$value = $app->getUserStateFromRequest($this->context.'.filter_status', 'status', array());
+		$this->setState('filter_status', $value);
+		//set filter category in state
+		$value = $app->getUserStateFromRequest($this->context.'.filter_category', 'cat', array());
+		$this->setState('filter_category', $value);
+	
+	
+		// List state information
+		// $value = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->getCfg('list_limit'));
+		$value = $app->getUserStateFromRequest($this->context.'.list.limit', 'limit', 0); //set 0 as default do not use admin configuration...
+		$this->setState('list.limit', $value);
+	
+		$value = $app->getUserStateFromRequest($this->context.'.limitstart', 'limitstart', 0);
+		//$value = JRequest::getUInt('limitstart', 0);
+		$this->setState('list.start', $value);
+	
+		//$orderCol	= JRequest::getCmd('filter_order', 'a.ordering'); 		//set default to reported ?? actually is the same as ordering ...
+		$orderCol = $app->getUserStateFromRequest($this->context.'.filter_order', 'filter_order', 'a.ordering');
+		if (!in_array($orderCol, $this->filter_fields)) {
+			$orderCol = 'a.ordering';
+		}
+		$this->setState('list.ordering', $orderCol);
+	
+		//$listOrder	=  JRequest::getCmd('filter_order_Dir', 'DESC');			//set default DESC
+		$listOrder = $app->getUserStateFromRequest($this->context.'.filter_order_Dir', 'filter_order_Dir', 'DESC');
+		if (!in_array(strtoupper($listOrder), array('ASC', 'DESC', ''))) {
+			$listOrder = 'DESC';
+		}
+		$this->setState('list.direction', $listOrder);
+	
+		$params = $app->getParams();
+		$this->setState('params', $params);
+		//TODO: If sometimes need multiple layouts I could use the layout state...
+		//$this->setState('layout', JRequest::getCmd('layout'));
+	}
+	
 	function getCategories($recursive = false)
 	{
         $_categories = JCategories::getInstance('Virtualcitytour360');

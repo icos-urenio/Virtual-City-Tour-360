@@ -20,11 +20,25 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 	protected $state;
 	protected $items;
 	protected $categories;
+	protected $pagination;
 	protected $params;
-	protected $pageclass_sfx;	
+	protected $pageclass_sfx;
 	protected $customMarkers = '';
 	protected $filters = '';
-	
+	protected $markers = '';
+	protected $statusFilters = '';
+	protected $getLimitBox = '';
+	protected $language = '';
+	protected $region = '';
+	protected $lat = '';
+	protected $lon = '';
+	protected $searchterm = '';
+	protected $zoom;
+	protected $loadjquery;
+	protected $loadbootstrap;
+	protected $loadbootstrapcss;
+	protected $credits;
+	protected $arCat;
 	
 	public function display($tpl = null)
 	{
@@ -43,6 +57,28 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 		$this->categories = $this->get('Categories');
 		
 		$this->createFilters($this->categories);
+		//merge params
+		$this->params	= $this->state->get('params');
+		
+		
+		$lang = $this->params->get('maplanguage');
+		$region = $this->params->get('mapregion');
+		$lat = $this->params->get('latitude');
+		$lon = $this->params->get('longitude');
+		$term = $this->params->get('searchterm');
+		$zoom = $this->params->get('zoom');
+		$this->loadjquery = $this->params->get('loadjquery');
+		$this->loadbootstrap = $this->params->get('loadbootstrap');
+		$this->loadbootstrapcss = $this->params->get('loadbootstrapcss');
+		$this->credits = $this->params->get('credits');
+		
+		$this->language = (empty($lang) ? "en" : $lang);
+		$this->region = (empty($region) ? "GB" : $region);
+		$this->lat = (empty($lat) ? 40.54629751976399 : $lat);
+		$this->lon = (empty($lon) ? 23.01861169311519 : $lon);
+		$this->searchterm = (empty($term) ? "" : $term);
+		$this->zoom = (empty($zoom) ? 17 : $zoom);				
+		
 		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) 
@@ -109,18 +145,33 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
-		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360.css');
 		
-		//add jquery scripts
-		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/jquery-1.5.2.min.js');
+		if($this->loadbootstrapcss == 1)
+			$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/css/bootstrap.min.css');	
+		
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/mega-menu.css');	
+			
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360.css');
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');
+		
+		//colorbox (keep this?)
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
+		
+		//add scripts
+		if($this->loadjquery == 1)
+			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/jquery-1.7.1.min.js');
+		if($this->loadbootstrap == 1)
+			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
+		
+		//colorbox (keep this?)
 		$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
-		
+	
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=en&region=GB");
+		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
+			
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');
-
+		
 		$LAT = ''; //todo get point from component's parameter
 		$LON = '';
 		if($LAT == '' || $LON == ''){
@@ -578,9 +629,75 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 			
 		";
 
+		$megamenu_js = "
+		window.addEvent('domready', function() {
+		$(\".imc-issue-item\").mouseenter(function(event)
+		{
+		$(this).addClass(\"imc-highlight\");
+		markerhover($(this).attr('id').substring(8));
+		});
+		
+		$(\".imc-issue-item\").mouseleave(function(event)
+		{
+		$(this).removeClass(\"imc-highlight\");
+		markerout($(this).attr('id').substring(8));
+		});
+		
+		$(document).click(function(e) {
+		if( $('#drop-1').is('.hover')) { $('#drop-1').removeClass('hover');	}
+		if( $('#drop-2').is('.hover')) { $('#drop-2').removeClass('hover');	}
+		if( $('#drop-3').is('.hover')) { $('#drop-3').removeClass('hover');	}
+		});
+			
+		$('#btn-1').click(function(event)
+		{
+		if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+		if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+		
+		if( $('#drop-1').is('.hover')) {
+		$('#drop-1').removeClass('hover');
+		}
+		else{
+		$('#drop-1').addClass('hover');
+		}
+		event.stopPropagation();
+		});
+			
+		$('#btn-2').click(function(event)
+		{
+		if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
+		if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+			
+		if( $('#drop-2').is('.hover')) {
+		$('#drop-2').removeClass('hover');
+		}
+		else{
+		$('#drop-2').addClass('hover');
+		}
+		event.stopPropagation();
+		});
+		$('#btn-3').click(function(event)
+		{
+		if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
+		if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+			
+		if( $('#drop-3').is('.hover')) {
+		$('#drop-3').removeClass('hover');
+		}
+		else{
+		$('#drop-3').addClass('hover');
+		}
+		event.stopPropagation();
+		});
+			
+		$('.megadrop').click(function(event) { event.stopPropagation();	});
+			
+		});
+		";
+		
 		//add the javascript to the head of the html document
 		$document->addScriptDeclaration($googleMapInit);
-		
+		$document->addScriptDeclaration($megamenu_js);
 
 	}
 }

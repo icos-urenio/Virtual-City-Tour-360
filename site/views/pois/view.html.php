@@ -41,7 +41,6 @@ class Virtualcitytour360ViewPois extends JView
 	protected $credits;
 	protected $arCat;
 
-	public $f = '';	
 	function display($tpl = null)
 	{
 		$app		= JFactory::getApplication();

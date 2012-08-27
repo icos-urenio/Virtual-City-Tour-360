@@ -8,7 +8,7 @@ Refer to VirtualCityTour360 [wiki pages](https://github.com/icos-urenio/Virtual-
 
 ## Bug Tracker
 Have a bug? Please create an issue here on GitHub!
-[https://github.com/icos-urenio/Improve-my-city/issues](https://github.com/icos-urenio/Virtual-City-Tour-360/issues).
+[https://github.com/icos-urenio/Virtual-City-Tour-360/issues](https://github.com/icos-urenio/Virtual-City-Tour-360/issues).
 
 ## License
 VirtualCityTour360's source code is licensed under the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl.html).

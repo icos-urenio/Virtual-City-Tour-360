@@ -119,7 +119,7 @@ class Virtualcitytour360ViewAddpoi extends JView
 		//$document->addScript(JURI::root() . "/components/com_virtualcitytour360/views/addpoi/submitbutton.js");
 		
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=".$this->language."&region=" . $this->region);
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=".$this->language."&region=" . $this->region);
 
 		$LAT = $this->lat;
 		$LON = $this->lon;

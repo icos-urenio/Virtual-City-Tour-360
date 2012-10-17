@@ -244,7 +244,7 @@ class Virtualcitytour360ViewPois extends JView
 		
 		
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');		
 
 		$document->addScriptDeclaration('var jsonMarkers = '.json_encode($this->getMarkersArrayFromItems()).';');

@@ -168,7 +168,7 @@ class Virtualcitytour360ViewVirtualcitytour360 extends JView
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 	
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 			
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');
 		

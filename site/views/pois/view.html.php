@@ -310,7 +310,7 @@ class Virtualcitytour360ViewPois extends JView
 					  ,width: \"200px\"
 					 }
 					,closeBoxMargin: \"10px 2px 2px 2px\"
-					,closeBoxURL: \"http://www.google.com/intl/en_us/mapfiles/close.gif\"
+					,closeBoxURL: \"https://www.google.com/intl/en_us/mapfiles/close.gif\"
 					,infoBoxClearance: new google.maps.Size(1, 1)
 					,isHidden: false
 					,pane: \"floatPane\"
@@ -581,7 +581,7 @@ class Virtualcitytour360ViewPois extends JView
 		//$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 	
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 			
 		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/infobox_packed.js');
 
@@ -649,7 +649,7 @@ class Virtualcitytour360ViewPois extends JView
 					,width: \"200px\"
 				}
 				,closeBoxMargin: \"10px 2px 2px 2px\"
-				,closeBoxURL: \"http://www.google.com/intl/en_us/mapfiles/close.gif\"
+				,closeBoxURL: \"https://www.google.com/intl/en_us/mapfiles/close.gif\"
 				,infoBoxClearance: new google.maps.Size(1, 1)
 				,isHidden: false
 				,pane: \"floatPane\"
@@ -958,9 +958,9 @@ class Virtualcitytour360ViewPois extends JView
 		}
 			
 		function embedFlash(pan){
-			var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
+			var flash = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0\" id=\"RyubinPanorama\" >';
 			flash += '<param name=\"wmode\" value=\"transparent\"> ';
-			flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"http://www.macromedia.com/go/getflashplayer\" />';
+			flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"https://www.macromedia.com/go/getflashplayer\" />';
 			flash += '</object>';
 			$(\"#panorama\").html(flash);
 		}

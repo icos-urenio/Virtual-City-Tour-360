@@ -93,7 +93,7 @@ class Virtualcitytour360ViewItem extends JView
 		$document = JFactory::getDocument();
 		$document->setTitle($isNew ? JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_CREATING') : JText::_('COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_EDITING'));
 		
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=en&region=GB");
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=en&region=GB");
 
 		$LAT = $this->form->getValue('latitude');
 		$LON = $this->form->getValue('longitude');

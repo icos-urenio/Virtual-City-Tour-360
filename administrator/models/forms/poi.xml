@@ -46,7 +46,18 @@
 			class="inputbox validate-longitude"
 			required="false"
 			default=""
-		/>			
+		/>
+		<field
+			name="description"
+			type="editor"
+			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_LABEL"
+			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_DESC"
+			class="inputbox validate-description"
+			buttons="false"
+			hide="readmore,pagebreak,toggleeditor"
+			required="false"
+		/>		
+		<!-- 					
 		<field
 			name="description"
 			type="textarea"
@@ -61,6 +72,7 @@
 			rows="5"
 			cols="200"
 		/>		
+		 -->
 		<field
 			name="language"
 			type="contentlanguage"

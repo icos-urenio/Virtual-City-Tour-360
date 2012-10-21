@@ -53,7 +53,7 @@
 			label="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_LABEL"
 			description="COM_VIRTUALCITYTOUR360_VIRTUALCITYTOUR360_FIELD_DESCRIPTION_DESC"
 			class="inputbox validate-description"
-			
+			filter="safehtml"
 			hide="readmore,pagebreak,toggleeditor"
 			required="false"
 		/>		

@@ -59,7 +59,7 @@
 #markerInfo img{padding: 2px; margin: 1px; border: none;}
 #imc-details-sidebar-fifty #mapCanvas{
 	width: 100%; 
-	height: 450px;
+	height: 430px;
 	margin: 0 auto;
 }
 #imc-details-sidebar #mapCanvas{
@@ -73,6 +73,15 @@
 	margin: 0 auto;
 }
 
+
+.markerTitle{
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+ 
+#markerImages img{padding: 5px;}
+#markerInfo {padding-top: 20px;}
 
 /* sidebar */
 #imc-details-sidebar{min-height: 600px;} /* to display mega menu correctly if filters return no results*/

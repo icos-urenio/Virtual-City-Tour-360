@@ -61,6 +61,13 @@
 	height: 18px;
 }
 
+
+.markerTitle{
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 #wrapper-filters header .title,
 #wrapper-info header .title {
     background-color: #780E00;

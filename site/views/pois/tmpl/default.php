@@ -53,22 +53,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 								</div>					
 							<?php }?>
 
-							<div class="col_4" style="text-align: center;">
-								<button type="submit" class="btn btn-success" name="Submit" value="<?php echo JText::_('COM_VIRTUALCITYTOUR360_APPLY_FILTERS')?>"><i class="icon-ok icon-white"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_APPLY_FILTERS')?></button>
-							</div>
+
 						</div>
 					</li>
-					<li id="drop-2"><a id="btn-2" href="javascript:void(0);" class="btn"><i class="icon-adjust"></i> <?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEWS')?></a>
-						<div class="megadrop dropdown_2columns">
-							<div class="col_2">						
-								<ul>
-									<!-- dropdown menu links -->
-									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=virtualcitytour360');?>"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW1');?></a></li>
-									<li><a href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&view=pois');?>"><?php echo JText::_('COM_VIRTUALCITYTOUR360_VIEW2');?> <i class=" icon-ok"></i></a></li>
-								</ul>						
-							</div>
-						</div>
-					</li>					
 				</ul>
 			</form>
 	
@@ -92,13 +79,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 					</div>
 				<?php endif; ?>
 				<!-- <a href="#" onclick="google.maps.event.trigger(gmarkers[0], 'click');">test</a> -->				
-				<div id="wrapper-info">	
-					<div id="markerTitle">&nbsp;</div>
-					<div id="content-info">
-						<div id="panorama"></div>
-						<div id="markerInfo"></div>		
-					</div>
-				</div>			
+	
+					<div id="markerTitle"></div>
+					<div id="panorama"></div>
+					<div id="markerHead"></div>	
+			
+				&nbsp;		
 			</div>
 		</div>
 		<div id="imc-details-sidebar-fifty">
@@ -107,6 +93,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_VIRTUALCITYTOUR360_INFOALERT');?></div>
 			<?php endif; ?>
 		</div>	
+		<div style="clear: both"></div>
+		<div id="wrapper-info">
+			<div id="markerImages"></div>	
+			<div id="markerInfo"></div>
+		</div>
 	</div>
 </div>
 

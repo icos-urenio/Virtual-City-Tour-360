@@ -14,9 +14,10 @@
 	<user_panel>
 		<logo path="/thermi/components/com_virtualcitytour360/pano/logo_panorama.png" posx="5" posy="5" />
 	</user_panel>	
-	-->
+	
 	<play_objects>
 		<view init_filter="yes" limit_vertical="yes" init_fov="120" init_yaw="0" init_pitch="0" top_limit="67" bottom_limit="67" />
-	</play_objects>	
+	</play_objects>
+	-->	
 </my_params>
 

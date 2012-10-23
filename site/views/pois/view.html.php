@@ -568,7 +568,7 @@ class Virtualcitytour360ViewPois extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');	
 		//colorbox (keep this?)
-		//$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
 		
 		//add scripts
 		if($this->loadjquery == 1)
@@ -577,7 +577,7 @@ class Virtualcitytour360ViewPois extends JView
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
 		
 		//colorbox (keep this?)
-		//$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
+		$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
 		//$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 	
 		//add google maps
@@ -699,7 +699,7 @@ class Virtualcitytour360ViewPois extends JView
 		
 			google.maps.event.addListenerOnce(map, 'idle', function(){
 				// $(\"#loading\").hide();
-				google.maps.event.trigger(gmarkers[0], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
+				google.maps.event.trigger(gmarkers[4], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
 			});
 			
 			$(\"#loading\").hide();
@@ -882,24 +882,30 @@ class Virtualcitytour360ViewPois extends JView
 		}
 		
 		function showInfo(marker){
-			$(\"#markerTitle\").html('<h2>' + marker.title + '</h2>');
+			$(\"#markerTitle\").html('<span class=\"markerTitle\">' + marker.title + '</span>');
 			$(\"#panorama\").html('');
+			$(\"#markerHead\").html('');
 			$(\"#markerInfo\").html('');
-			html = '';
+			$(\"#markerImages\").html('');
+			
 			
 			if(marker.panoramas != ''){
-				//html += '<h3>Πανοράματα</h3>';
-				html += createInfoPanoramas(marker);
+				$(\"#markerHead\").html(createInfoPanoramas(marker));
+				$(\"#markerImages\").html(createInfoImages(marker));
+				$(\"#markerInfo\").html(marker.description);	
 			}
-			
-			if(marker.photos != ''){
-				//html += '<h3>Φωτογραφίες</h3>';
-				html += '<br /><br />';
-				html += createInfoImages(marker);
+			else if(marker.photos != ''){
+				$(\"#markerHead\").html(createInfoImages(marker));
+				$(\"#markerInfo\").html(marker.description);
+			} 
+			else {
+				$(\"#markerHead\").html(marker.description);
 			}
-			
-			html += '<p>' + marker.description + '</p>';
-			$(\"#markerInfo\").html(html);
+					
+					
+					
+					
+					
 			
 			if(marker.photos != ''){
 				$(\"a[rel='photos']\").colorbox();
@@ -944,12 +950,12 @@ class Virtualcitytour360ViewPois extends JView
 						if(arr.length == 2){
 							return html;
 						}
-						html += '<ul>';
+						html += '<div class=\"btn-group\">';
 					}
 					
-					html += '<li><a href=\"javascript:void(0);\" onclick=\"embedFlash(\''+pan+'\')\"><span class=\"tab\">' + (i+1) + '</span></a></li>';
+					html += '<button class=\"btn\" onclick=\"embedFlash(\''+pan+'\')\">' + (i+1) + '</button>';
 					if(i == arr.length-1){
-						html += '</ul>';
+						html += '</div>';
 					}
 				}
 			}

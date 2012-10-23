@@ -1,4 +1,7 @@
 # VirtualCityTour360
+
+![Screenshots from the application](http://smartcityapps.urenio.org/img/screens_virtual_en.png)
+
 VirtualCityTour360 is a Joomla 2.5.x extension component that supports the creation of virtual tours of recreation facilities using interactive maps, 360o panoramas, video and images.
 
 VirtualCityTour360 has been developed within the European project PEOPLE. Find out more at [http://people-project.eu](http://people-project.eu).

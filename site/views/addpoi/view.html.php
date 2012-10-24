@@ -158,7 +158,7 @@ class Virtualcitytour360ViewAddpoi extends JView
 					updateMarkerAddress(results[0].formatted_address);			
 
 				  } else {
-					alert('".JText::_('COM_IMPROVEMYCITY_ADDRESS_NOT_FOUND')."');
+					alert('".JText::_('COM_VIRTUALCITYTOUR360_ADDRESS_NOT_FOUND')."');
 				  }
 				});		
 			}
@@ -172,7 +172,7 @@ class Virtualcitytour360ViewAddpoi extends JView
 				if (responses && responses.length > 0) {
 				  updateMarkerAddress(responses[0].formatted_address);
 				} else {
-				  updateMarkerAddress('".JText::_('COM_IMPROVEMYCITY_ADDRESS_NOT_FOUND')."');
+				  updateMarkerAddress('".JText::_('COM_VIRTUALCITYTOUR360_ADDRESS_NOT_FOUND')."');
 				}
 			  });
 			}
@@ -206,12 +206,12 @@ class Virtualcitytour360ViewAddpoi extends JView
 			  
 			  marker = new google.maps.Marker({
 				position: latLng,
-				title: '".JText::_('COM_IMPROVEMYCITY_REPORT_LOCATION')."',
+				title: '".JText::_('COM_VIRTUALCITYTOUR360_REPORT_LOCATION')."',
 				map: map,
 				draggable: true
 			  });
 			  
-			  var infoString = '".JText::_('COM_IMPROVEMYCITY_DRAG_MARKER')."';
+			  var infoString = '".JText::_('COM_VIRTUALCITYTOUR360_DRAG_MARKER')."';
 
 			  var infowindow = new google.maps.InfoWindow({
 				content: infoString

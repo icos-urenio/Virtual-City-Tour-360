@@ -34,6 +34,7 @@ class Virtualcitytour360Controller extends JController
 	
 		$v = & $this->getView($view, 'html');
 		$v->setModel($this->getModel($view));
+
 		//$v->display();
 		parent::display();
 	

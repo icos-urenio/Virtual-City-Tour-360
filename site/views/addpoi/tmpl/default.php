@@ -14,7 +14,7 @@ JHtml::_('behavior.keepalive');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 if($this->popupmodal == 1)
-	JHTML::_('behavior.modal', 'a.modal', array('handler' => 'ajax')); /* fix */
+	JHTML::_('behavior.modal', 'a.modalwin', array('handler' => 'ajax')); /* fix */
 ?>
 
 <div id="imc-wrapper" class="imc <?php echo $this->pageclass_sfx; ?>">
@@ -39,7 +39,6 @@ if($this->popupmodal == 1)
 			<div class="btn-group imc-right">
 				<a class="btn" href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360');?>"><i class="icon-arrow-left"></i> <?php echo JText::_('RETURN_TO_ISSUES');?></a>
 			</div>
-		
 		</div>
 	</div>	
 	<div id="imc-content">
@@ -53,7 +52,7 @@ if($this->popupmodal == 1)
 					<div class="alert alert-error">
 					<?php echo JText::_('NOT_LOGGED_IN');?>
 					<?php $return = base64_encode(Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&controller=virtualcitytour360&task=addPoi')); ?>
-					<a class="modal strong-link" rel="{size: {x: 320, y: 350}}" href="index.php?option=com_users&view=login&tmpl=component&return=<?php echo $return; ?>"><span class="strong-link"><?php echo JText::_('PLEASE_LOG');?></span></a>
+					<a class="modalwin strong-link" rel="{size: {x: 320, y: 350}}" href="index.php?option=com_users&view=login&tmpl=component&return=<?php echo $return; ?>"><span class="strong-link"><?php echo JText::_('PLEASE_LOG');?></span></a>
 					</div>				
 				<?php endif;?>
 				

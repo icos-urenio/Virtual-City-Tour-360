@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	$("a[rel='colorbox']").colorbox();	
+	
 	$("#toggleMapSize").click(function(event){
         event.preventDefault();
         var height = $("#mapCanvas").height();
@@ -34,7 +36,7 @@ $(document).ready(function(){
 		markerSearch( $("#searchTextMarker").val() );
 	});
 	
-	$("a[rel='colorbox']").colorbox();
+	
 
 	$(".info-close").click(function (event) 
 	{ 
@@ -46,7 +48,7 @@ $(document).ready(function(){
 			infoBox.close();				
 		
 	});	
-
+ 
 	$(".filter-close").click(function (event) 
 	{ 
 		event.preventDefault(); 

@@ -558,6 +558,7 @@ class Virtualcitytour360ViewPois extends JView
 		$document->addScriptDeclaration($googleMapInit);
 	}
 	
+	
 	protected function setDocument()
 	{
 		$document = JFactory::getDocument();
@@ -567,8 +568,6 @@ class Virtualcitytour360ViewPois extends JView
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');	
-		//colorbox (keep this?)
-		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
 		
 		//add scripts
 		if($this->loadjquery == 1)
@@ -579,7 +578,11 @@ class Virtualcitytour360ViewPois extends JView
 		//colorbox (keep this?)
 		$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
 		//$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
-	
+		//colorbox (keep this?)
+		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
+		
+		
+		
 		//add google maps
 		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 			

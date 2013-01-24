@@ -114,6 +114,10 @@ class Virtualcitytour360ViewAddpoi extends JView
 		}
 		///$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 		
+		//add scripts
+		if($this->loadbootstrap == 1)
+			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');		
+		
 		/* category validation only works on server-side with the JRule regex, make it validate on client-side as well*/
 		$document->addScript(JURI::root() . $this->script);
 		//$document->addScript(JURI::root() . "/components/com_virtualcitytour360/views/addpoi/submitbutton.js");
@@ -251,7 +255,7 @@ class Virtualcitytour360ViewAddpoi extends JView
 	
 		$f = "
 		Joomla.submitbutton = function(task) {
-			if (task == 'issue.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
+			if (task == 'poi.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
 				
 				Joomla.submitform(task);
 			}

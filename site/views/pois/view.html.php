@@ -222,7 +222,7 @@ class Virtualcitytour360ViewPois extends JView
 		return $ar;
 	}
 	
-	protected function setDocumentOK() 
+	protected function setDocumentOLD() 
 	{
 		$document = JFactory::getDocument();
 		

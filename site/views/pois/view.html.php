@@ -709,7 +709,7 @@ class Virtualcitytour360ViewPois extends JView
 		
 			google.maps.event.addListenerOnce(map, 'idle', function(){
 				// $(\"#loading\").hide();
-				google.maps.event.trigger(gmarkers[4], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
+				google.maps.event.trigger(gmarkers[0], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
 			});
 			
 			jVct(\"#loading\").hide();

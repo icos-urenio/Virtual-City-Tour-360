@@ -34,7 +34,7 @@ class Virtualcitytour360ControllerPoi extends JControllerForm
 	 * @return	string	The return URL.
 	 */
 	protected function getReturnPage()
-	{
+	{ 
 		$return = JRequest::getVar('return', null, 'default', 'base64');
 
 		if (empty($return) || !JUri::isInternal(base64_decode($return))) {

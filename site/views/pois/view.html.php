@@ -577,7 +577,7 @@ class Virtualcitytour360ViewPois extends JView
 		
 		//colorbox (keep this?)
 		$document->addScript(JURI::root(true) . "/components/com_virtualcitytour360/js/colorbox/jquery.colorbox-min.js");
-		//$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
+		$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/virtualcitytour360.js');	
 		//colorbox (keep this?)
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/js/colorbox/css/colorbox.css');
 		
@@ -599,7 +599,7 @@ class Virtualcitytour360ViewPois extends JView
 		$this->createCustomMarkers($this->categories);
 		$this->customMarkers = substr($this->customMarkers, 0, -2);	//remove /n and comma
 		
-		$googleMapInit = "
+		$googleMap = "
 		var geocoder = new google.maps.Geocoder();
 		var map = null;
 		var gmarkers = [];
@@ -975,12 +975,14 @@ class Virtualcitytour360ViewPois extends JView
 		}
 		
 		// Onload handler to fire off the app.
-		google.maps.event.addDomListener(window, 'load', initialize);
+		//google.maps.event.addDomListener(window, 'load', initialize);
 		";
 
 		
 		$megamenu_js = "
 		window.addEvent('domready', function() {
+			initialize();
+				
 			$(\".imc-issue-item\").mouseenter(function(event)
 			{
 				$(this).addClass(\"imc-highlight\");
@@ -1046,7 +1048,7 @@ class Virtualcitytour360ViewPois extends JView
 		";
 		
 		//add javascript to the head of the html document
-		$document->addScriptDeclaration($googleMapInit);
+		$document->addScriptDeclaration($googleMap);
 		$document->addScriptDeclaration($megamenu_js);
 	}
 

@@ -15,6 +15,14 @@ function Virtualcitytour360BuildRoute(&$query)
 {
 	$segments = array();
 
+	if (isset($query['view'])) {
+		$segments[] = $query['view'];
+		unset($query['view']);
+	}
+	if (isset($query['poi_id'])) {
+		$segments[] = $query['poi_id'];
+		unset($query['poi_id']);
+	}
 	if (isset($query['task'])) {
 		$segments[] = $query['task'];
 		unset($query['task']);
@@ -23,7 +31,10 @@ function Virtualcitytour360BuildRoute(&$query)
 		$segments[] = $query['id'];
 		unset($query['id']);
 	}
-
+	if (isset($query['controller'])) {
+		$segments[] = $query['controller'];
+		unset($query['controller']);	
+	}
 	return $segments;
 }
 

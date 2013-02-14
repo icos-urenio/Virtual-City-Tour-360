@@ -59,11 +59,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				</ul>
 			</form>
 	
-			<!-- New Issue -->
+			<!-- New POI -->
+			<?php /* 
 			<div class="btn-group imc-right">
 				<a class="btn btn-large btn-primary" href="<?php echo Virtualcitytour360Helper::generateRouteLink('index.php?option=com_virtualcitytour360&task=addPoi');?>"><i class="icon-plus icon-white"></i> <?php echo JText::_('REPORT_AN_ISSUE');?></a>
 			</div>
-				
+			*/	?>
 			
 		</div>
 	</div>

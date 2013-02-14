@@ -113,8 +113,6 @@ class Virtualcitytour360ViewPois extends JView
 		
 		// Set the document
 		$this->setDocument();
-	
-		
 	}
 	
 	protected function createFilters($cats = array())
@@ -232,10 +230,14 @@ class Virtualcitytour360ViewPois extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');	
 
-		
 		//add scripts
-		if($this->loadjquery == 1)
+		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/jquery-1.7.1.min.js');
+			//jquery noConflict
+			$document->addScriptDeclaration( 'var jVct = jQuery.noConflict();' );
+		}		
+
+		
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
 
@@ -486,25 +488,25 @@ class Virtualcitytour360ViewPois extends JView
 			}			
 			
 			window.addEvent('domready', function() {
-				$(\".imc-issue-item\").mouseenter(function(event)
+				jVct(\".imc-issue-item\").mouseenter(function(event)
 				{
 					$(this).addClass(\"imc-highlight\");
 					markerhover($(this).attr('id').substring(8));
 				});
 
-				$(\".imc-issue-item\").mouseleave(function(event)
+				jVct(\".imc-issue-item\").mouseleave(function(event)
 				{
 					$(this).removeClass(\"imc-highlight\");
 					markerout($(this).attr('id').substring(8));
 				});	  
 
-				$(document).click(function(e) {
+				jVct(document).click(function(e) {
 					if( $('#drop-1').is('.hover')) { $('#drop-1').removeClass('hover');	}				   
 					if( $('#drop-2').is('.hover')) { $('#drop-2').removeClass('hover');	}				   
 					if( $('#drop-3').is('.hover')) { $('#drop-3').removeClass('hover');	}				   
 				});
 				
-				$('#btn-1').click(function(event)
+				jVct('#btn-1').click(function(event)
 				{
 					if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
 					if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
@@ -518,7 +520,7 @@ class Virtualcitytour360ViewPois extends JView
 					event.stopPropagation();
 				});
 				
-				$('#btn-2').click(function(event)
+				jVct('#btn-2').click(function(event)
 				{
 					if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
 					if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
@@ -531,7 +533,7 @@ class Virtualcitytour360ViewPois extends JView
 					}
 					event.stopPropagation();
 				});
-				$('#btn-3').click(function(event)
+				jVct('#btn-3').click(function(event)
 				{
 					if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
 					if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
@@ -545,7 +547,7 @@ class Virtualcitytour360ViewPois extends JView
 					event.stopPropagation();
 				});
 				
-				$('.megadrop').click(function(event) { event.stopPropagation();	});
+				jVct('.megadrop').click(function(event) { event.stopPropagation();	});
 				
 			});
 			
@@ -570,8 +572,13 @@ class Virtualcitytour360ViewPois extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_virtualcitytour360/css/virtualcitytour360_list.css');	
 		
 		//add scripts
-		if($this->loadjquery == 1)
+		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/js/jquery-1.7.1.min.js');
+			//jquery noConflict
+			$document->addScriptDeclaration( 'var jVct = jQuery.noConflict();' );
+		}		
+		
+		
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_virtualcitytour360/bootstrap/js/bootstrap.min.js');
 		
@@ -705,7 +712,7 @@ class Virtualcitytour360ViewPois extends JView
 				google.maps.event.trigger(gmarkers[4], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
 			});
 			
-			$(\"#loading\").hide();
+			jVct(\"#loading\").hide();
 		}
 			
 		//alternative to infoWindow is the infoBox
@@ -774,7 +781,7 @@ class Virtualcitytour360ViewPois extends JView
 			}
 			// == check the checkbox ==
 			///document.getElementById('box'+category).checked = true;
-			$('#box'+category).checked = true;
+			jVct('#box'+category).checked = true;
 			resetBounds();
 		}
 		
@@ -786,16 +793,16 @@ class Virtualcitytour360ViewPois extends JView
 			}
 			// == clear the checkbox ==
 			///document.getElementById('box'+category).checked = false;
-			$('#box'+category).checked = false;
+			jVct('#box'+category).checked = false;
 			if(infoWindow != null)
 				infoWindow.close();
 			
 			if(infoBox != null)
 				infoBox.close();
 			
-			$(\"#markerInfo\").html('');
-			$(\"#panorama\").html('');
-			$(\"#wrapper-info\").hide(500);
+			jVct(\"#markerInfo\").html('');
+			jVct(\"#panorama\").html('');
+			jVct(\"#wrapper-info\").hide(500);
 			resetBounds();
 		}
 			
@@ -885,24 +892,24 @@ class Virtualcitytour360ViewPois extends JView
 		}
 		
 		function showInfo(marker){
-			$(\"#markerTitle\").html('<span class=\"markerTitle\">' + marker.title + '</span>');
-			$(\"#panorama\").html('');
-			$(\"#markerHead\").html('');
-			$(\"#markerInfo\").html('');
-			$(\"#markerImages\").html('');
+			jVct(\"#markerTitle\").html('<span class=\"markerTitle\">' + marker.title + '</span>');
+			jVct(\"#panorama\").html('');
+			jVct(\"#markerHead\").html('');
+			jVct(\"#markerInfo\").html('');
+			jVct(\"#markerImages\").html('');
 			
 			
 			if(marker.panoramas != ''){
-				$(\"#markerHead\").html(createInfoPanoramas(marker));
-				$(\"#markerImages\").html(createInfoImages(marker));
-				$(\"#markerInfo\").html(marker.description);	
+				jVct(\"#markerHead\").html(createInfoPanoramas(marker));
+				jVct(\"#markerImages\").html(createInfoImages(marker));
+				jVct(\"#markerInfo\").html(marker.description);	
 			}
 			else if(marker.photos != ''){
-				$(\"#markerHead\").html(createInfoImages(marker));
-				$(\"#markerInfo\").html(marker.description);
+				jVct(\"#markerHead\").html(createInfoImages(marker));
+				jVct(\"#markerInfo\").html(marker.description);
 			} 
 			else {
-				$(\"#markerHead\").html(marker.description);
+				jVct(\"#markerHead\").html(marker.description);
 			}
 					
 					
@@ -911,17 +918,17 @@ class Virtualcitytour360ViewPois extends JView
 					
 			
 			if(marker.photos != ''){
-				$(\"a[rel='photos']\").colorbox();
+				jVct(\"a[rel='photos']\").colorbox();
 			}
 			
 			if(marker.panoramas != ''){
-				$(\"#panorama\").show();
+				jVct(\"#panorama\").show();
 			}
 			else{
-				$(\"#panorama\").hide();
+				jVct(\"#panorama\").hide();
 			}
 			
-			$(\"#wrapper-info\").show(500);
+			jVct(\"#wrapper-info\").show(500);
 		}
 			
 		function createInfoImages(marker){
@@ -971,7 +978,7 @@ class Virtualcitytour360ViewPois extends JView
 			flash += '<param name=\"wmode\" value=\"transparent\"> ';
 			flash +='<embed src=\"". JURI::base()."components/com_virtualcitytour360/pano/RyubinPanoPlayer5.swf\" wmode=\"transparent\" FlashVars=\"playmode=sphere&internal_ctrl=no&img_path='+pan+'&cursor_path=". JURI::base()."components/com_virtualcitytour360/pano/my_cursor.png&xml_path=". JURI::base()."components/com_virtualcitytour360/pano/panosettings.xml\" width=\"100%\" height=\"350px\" name=\"RyubinPanorama\" allowFullScreen=\"true\" type=\"application/x-shockwave-flash\" pluginspage=\"https://www.macromedia.com/go/getflashplayer\" />';
 			flash += '</object>';
-			$(\"#panorama\").html(flash);
+			jVct(\"#panorama\").html(flash);
 		}
 		
 		// Onload handler to fire off the app.
@@ -983,66 +990,66 @@ class Virtualcitytour360ViewPois extends JView
 		window.addEvent('domready', function() {
 			initialize();
 				
-			$(\".imc-issue-item\").mouseenter(function(event)
+			jVct(\".imc-issue-item\").mouseenter(function(event)
 			{
-				$(this).addClass(\"imc-highlight\");
+				jVct(this).addClass(\"imc-highlight\");
 				markerhover($(this).attr('id').substring(8));
 			});
 
-			$(\".imc-issue-item\").mouseleave(function(event)
+			jVct(\".imc-issue-item\").mouseleave(function(event)
 			{
-				$(this).removeClass(\"imc-highlight\");
+				jVct(this).removeClass(\"imc-highlight\");
 				markerout($(this).attr('id').substring(8));
 			});	  
 
-			$(document).click(function(e) {
-				if( $('#drop-1').is('.hover')) { $('#drop-1').removeClass('hover');	}				   
-				if( $('#drop-2').is('.hover')) { $('#drop-2').removeClass('hover');	}				   
-				if( $('#drop-3').is('.hover')) { $('#drop-3').removeClass('hover');	}				   
+			jVct(document).click(function(e) {
+				if( jVct('#drop-1').is('.hover')) { jVct('#drop-1').removeClass('hover');	}				   
+				if( jVct('#drop-2').is('.hover')) { jVct('#drop-2').removeClass('hover');	}				   
+				if( jVct('#drop-3').is('.hover')) { jVct('#drop-3').removeClass('hover');	}				   
 			});
 			
-			$('#btn-1').click(function(event)
+			jVct('#btn-1').click(function(event)
 			{
-				if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
-				if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+				if( jVct('#drop-2').is('.hover')) { jVct('#btn-2').click(); }
+				if( jVct('#drop-3').is('.hover')) { jVct('#btn-3').click(); }
 				
-				if( $('#drop-1').is('.hover')) {
-					$('#drop-1').removeClass('hover');
+				if( jVct('#drop-1').is('.hover')) {
+					jVct('#drop-1').removeClass('hover');
 				}
 				else{
-					$('#drop-1').addClass('hover');
+					jVct('#drop-1').addClass('hover');
 				}
 				event.stopPropagation();
 			});
 			
-			$('#btn-2').click(function(event)
+			jVct('#btn-2').click(function(event)
 			{
-				if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
-				if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+				if( jVct('#drop-1').is('.hover')) { jVct('#btn-1').click(); }
+				if( jVct('#drop-3').is('.hover')) { jVct('#btn-3').click(); }
 			
-				if( $('#drop-2').is('.hover')) {
-					$('#drop-2').removeClass('hover');
+				if( jVct('#drop-2').is('.hover')) {
+					jVct('#drop-2').removeClass('hover');
 				}
 				else{
-					$('#drop-2').addClass('hover');
+					jVct('#drop-2').addClass('hover');
 				}
 				event.stopPropagation();
 			});
-			$('#btn-3').click(function(event)
+			jVct('#btn-3').click(function(event)
 			{
-				if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
-				if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+				if( jVct('#drop-1').is('.hover')) { jVct('#btn-1').click(); }
+				if( jVct('#drop-2').is('.hover')) { v('#btn-2').click(); }
 			
-				if( $('#drop-3').is('.hover')) {
-					$('#drop-3').removeClass('hover');
+				if( jVct('#drop-3').is('.hover')) {
+					jVct('#drop-3').removeClass('hover');
 				}
 				else{
-					$('#drop-3').addClass('hover');
+					jVct('#drop-3').addClass('hover');
 				}
 				event.stopPropagation();
 			});
 			
-			$('.megadrop').click(function(event) { event.stopPropagation();	});
+			jVct('.megadrop').click(function(event) { event.stopPropagation();	});
 			
 		});			
 		";

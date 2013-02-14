@@ -34,6 +34,7 @@
 		<folder>js</folder>
 		<folder>images</folder>
 		<folder>css</folder>
+		<folder>bootstrap</folder>
 	</files>
 	<languages folder="site">
 		<language tag="en-GB">language/en-GB.com_virtualcitytour360.ini</language>

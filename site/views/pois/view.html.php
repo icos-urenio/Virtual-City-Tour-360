@@ -167,10 +167,10 @@ class Virtualcitytour360ViewPois extends JView
 			if($a == 0)
 				$a = JText::_('ALL');
 			if($selected == $i){
-				$html .= '<li><a href="#" onclick="$(\'input[name=limit]\').val('.$i.');$(\'#adminForm\').submit();">'.$a.' <i class="icon-ok"></i></a></li>';
+				$html .= '<li><a href="#" onclick="jVct(\'input[name=limit]\').val('.$i.');jVct(\'#adminForm\').submit();">'.$a.' <i class="icon-ok"></i></a></li>';
 			}
 			else {
-				$html .= '<li><a href="#" onclick="$(\'input[name=limit]\').val('.$i.');$(\'#adminForm\').submit();">'.$a.'</a></li>';
+				$html .= '<li><a href="#" onclick="jVct(\'input[name=limit]\').val('.$i.');jVct(\'#adminForm\').submit();">'.$a.'</a></li>';
 			}
 		}
 		return $html;
@@ -359,7 +359,7 @@ class Virtualcitytour360ViewPois extends JView
 				resetBounds();
 
 				
-				$(\"#loading\").hide();
+				jVct(\"#loading\").hide();
 			}
 
 			function bindInfoWindow(marker, map, infoWindow, html) {
@@ -490,59 +490,59 @@ class Virtualcitytour360ViewPois extends JView
 			window.addEvent('domready', function() {
 				jVct(\".imc-issue-item\").mouseenter(function(event)
 				{
-					$(this).addClass(\"imc-highlight\");
-					markerhover($(this).attr('id').substring(8));
+					jVct(this).addClass(\"imc-highlight\");
+					markerhover(jVct(this).attr('id').substring(8));
 				});
 
 				jVct(\".imc-issue-item\").mouseleave(function(event)
 				{
-					$(this).removeClass(\"imc-highlight\");
-					markerout($(this).attr('id').substring(8));
+					jVct(this).removeClass(\"imc-highlight\");
+					markerout(jVct(this).attr('id').substring(8));
 				});	  
 
 				jVct(document).click(function(e) {
-					if( $('#drop-1').is('.hover')) { $('#drop-1').removeClass('hover');	}				   
-					if( $('#drop-2').is('.hover')) { $('#drop-2').removeClass('hover');	}				   
-					if( $('#drop-3').is('.hover')) { $('#drop-3').removeClass('hover');	}				   
+					if( jVct('#drop-1').is('.hover')) { jVct('#drop-1').removeClass('hover');	}				   
+					if( jVct('#drop-2').is('.hover')) { jVct('#drop-2').removeClass('hover');	}				   
+					if( jVct('#drop-3').is('.hover')) { jVct('#drop-3').removeClass('hover');	}				   
 				});
 				
 				jVct('#btn-1').click(function(event)
 				{
-					if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
-					if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+					if( jVct('#drop-2').is('.hover')) { jVct('#btn-2').click(); }
+					if( jVct('#drop-3').is('.hover')) { jVct('#btn-3').click(); }
 					
-					if( $('#drop-1').is('.hover')) {
-						$('#drop-1').removeClass('hover');
+					if( jVct('#drop-1').is('.hover')) {
+						jVct('#drop-1').removeClass('hover');
 					}
 					else{
-						$('#drop-1').addClass('hover');
+						jVct('#drop-1').addClass('hover');
 					}
 					event.stopPropagation();
 				});
 				
 				jVct('#btn-2').click(function(event)
 				{
-					if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
-					if( $('#drop-3').is('.hover')) { $('#btn-3').click(); }
+					if( jVct('#drop-1').is('.hover')) { jVct('#btn-1').click(); }
+					if( jVct('#drop-3').is('.hover')) { jVct('#btn-3').click(); }
 				
-					if( $('#drop-2').is('.hover')) {
-						$('#drop-2').removeClass('hover');
+					if( jVct('#drop-2').is('.hover')) {
+						jVct('#drop-2').removeClass('hover');
 					}
 					else{
-						$('#drop-2').addClass('hover');
+						jVct('#drop-2').addClass('hover');
 					}
 					event.stopPropagation();
 				});
 				jVct('#btn-3').click(function(event)
 				{
-					if( $('#drop-1').is('.hover')) { $('#btn-1').click(); }
-					if( $('#drop-2').is('.hover')) { $('#btn-2').click(); }
+					if( jVct('#drop-1').is('.hover')) { jVct('#btn-1').click(); }
+					if( jVct('#drop-2').is('.hover')) { jVct('#btn-2').click(); }
 				
-					if( $('#drop-3').is('.hover')) {
-						$('#drop-3').removeClass('hover');
+					if( jVct('#drop-3').is('.hover')) {
+						jVct('#drop-3').removeClass('hover');
 					}
 					else{
-						$('#drop-3').addClass('hover');
+						jVct('#drop-3').addClass('hover');
 					}
 					event.stopPropagation();
 				});
@@ -704,11 +704,10 @@ class Virtualcitytour360ViewPois extends JView
 					bindInfoBox(marker, map, infoBox, html);
 					gmarkers.push(marker);
 				}
-				$(\"#loading\").hide();
+				jVct(\"#loading\").hide();
 			});
 		
 			google.maps.event.addListenerOnce(map, 'idle', function(){
-				// $(\"#loading\").hide();
 				google.maps.event.trigger(gmarkers[0], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
 			});
 			
@@ -993,13 +992,13 @@ class Virtualcitytour360ViewPois extends JView
 			jVct(\".imc-issue-item\").mouseenter(function(event)
 			{
 				jVct(this).addClass(\"imc-highlight\");
-				markerhover($(this).attr('id').substring(8));
+				markerhover(jVct(this).attr('id').substring(8));
 			});
 
 			jVct(\".imc-issue-item\").mouseleave(function(event)
 			{
 				jVct(this).removeClass(\"imc-highlight\");
-				markerout($(this).attr('id').substring(8));
+				markerout(jVct(this).attr('id').substring(8));
 			});	  
 
 			jVct(document).click(function(e) {
